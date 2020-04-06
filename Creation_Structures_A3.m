@@ -1,3 +1,4 @@
+clear;
 load Aero_TMD.mat
 
 %% Structure Aero
@@ -5,13 +6,14 @@ Aero_TMD.Lref   = L_ref;
 Aero_TMD.vAlpha = vAlfa;
 Aero_TMD.vBeta  = vAlfa; % Missile 2 plans identiques
 Aero_TMD.vMach  = vMach;
-Aero_TMD.vAlt   = vAlt;
+Aero_TMD.vAlt   = [0 20000]';
 Aero_TMD.vBrq   = vBrq;
 
-Aero_TMD.CA_np = CA_np';
-Aero_TMD.CA_p  = CA_p';
+Aero_TMD.CA_np = [CA_np';CA_np'];
+Aero_TMD.CA_p  = [CA_p';CA_p'];
 Aero_TMD.CN    = CN(:,:,1);
 Aero_TMD.CY    = CN(:,:,1);
+Aero_TMD.CNmax = vCN_eq;
 
 clearvars -except *TMD*
 
@@ -36,3 +38,7 @@ Propu_TMD.Croisiere.D_Tuy  = 3.78*0.0254;
 %% Structure Masse/Inertie
 
 Masse_Inertie_TMD.Masse_Init = 500*0.4535;
+
+%%
+
+Simu_TMD.DDP_Min = 20; %metres
